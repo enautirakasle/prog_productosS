@@ -1,13 +1,32 @@
 package modelo.dao;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import modelo.Conector;
 import modelo.bean.Talla;
 
-public class ModeloTalla {
+public class ModeloTalla extends Conector{
 	
 	public ArrayList<Talla> getAll(){
-		//TODO implementar metodo que devuelva todos los estados
-		return null;
+		ArrayList<Talla> tallas = new ArrayList<Talla>();
+		try {
+			PreparedStatement pst = super.conexion.prepareStatement("select * from tallas");
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+				Talla talla = new Talla();
+				talla.setId(rs.getInt("id"));
+				talla.setNombre(rs.getString("nombre"));
+				
+				tallas.add(talla);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return tallas;
 	}
 }
