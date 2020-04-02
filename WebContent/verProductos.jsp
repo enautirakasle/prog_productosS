@@ -23,7 +23,7 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
         <li class="breadcrumb-item active" aria-current="page">Procutos</li>
-        <li class="breadcrumb-item"><a href="formCrearProducto.html">Nuevo</a></li>
+        <li class="breadcrumb-item"><a href="NuevoProcucto">Nuevo</a></li>
       </ol>
     </nav>
     <div class="row">
