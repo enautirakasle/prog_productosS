@@ -20,7 +20,7 @@ public class ModeloDescuento extends Conector{
 				Descuento descuento = new Descuento();
 				descuento.setId(rs.getInt("id"));
 				descuento.setValor(rs.getInt("valor"));
-				descuento.setDescripion(rs.getString("descripcion"));
+				descuento.setDescripcion(rs.getString("descripcion"));
 				
 				descuentos.add(descuento);
 			}
