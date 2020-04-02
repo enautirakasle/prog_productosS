@@ -29,7 +29,7 @@
     </nav>
     <div class="row">
       <div class="col-8">
-        <form>
+        <form action="InsertarProducto" method="post">
           <div class="mb-3">
             <div class="form-group">
               <label for="nombre">Nombre</label>
@@ -93,31 +93,14 @@
 
           <div class="mb-3">
             <div class="">Tallas</div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="talla" id="tallaS" value="S">
-              <label class="form-check-label" for="tallaS">
-                S
-              </label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="talla" id="tallaM" value="M">
-              <label class="form-check-label" for="tallaM">
-                M
-              </label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="talla" id="tallaL" value="L">
-              <label class="form-check-label" for="tallaL">
-                L
-              </label>
-            </div>
-
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="talla" id="" value="">
-              <label class="form-check-label" for="">
-                Todos de la tabla descuentos
-              </label>
-            </div>
+            <c:forEach items="${tallas }" var="talla">
+	            <div class="form-check form-check-inline">
+	              <input class="form-check-input" type="checkbox" name="talla" id="talla${talla.nombre }" value="${talla.nombre }">
+	              <label class="form-check-label" for="talla${talla.nombre }">
+	                ${talla.nombre }
+	              </label>
+	            </div>
+            </c:forEach>
           </div>
           <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
