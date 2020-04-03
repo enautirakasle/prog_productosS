@@ -81,6 +81,7 @@ public class InsertarProducto extends HttpServlet {
 		 
 		   //insertar producto
 		mProducto.insert(producto);
+		
 		response.sendRedirect("VerProductos");
 	}
 

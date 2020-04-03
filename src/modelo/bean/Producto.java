@@ -70,6 +70,7 @@ public class Producto {
 	}
 	public void setTallas(String[] tallas) {
 		String cadena = "";
+		
 		if(tallas!=null) {
 			for (int i = 0; i < tallas.length-1; i++) {
 				cadena = cadena + tallas[i]+",";
