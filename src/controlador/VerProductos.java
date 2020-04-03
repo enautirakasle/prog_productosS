@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modelo.dao.ModeloProducto;
+
 /**
  * Servlet implementation class VerProductos
  */
@@ -26,6 +28,9 @@ public class VerProductos extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ModeloProducto mProducto = new ModeloProducto();
+		
+		request.setAttribute("productos", mProducto.getAll());
 		request.getRequestDispatcher("verProductos.jsp").forward(request, response);
 	}
 

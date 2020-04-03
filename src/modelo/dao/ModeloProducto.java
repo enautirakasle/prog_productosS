@@ -1,6 +1,7 @@
 package modelo.dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -11,8 +12,30 @@ import modelo.bean.Talla;
 public class ModeloProducto extends Conector{
 
 	public ArrayList<Producto> getAll() {
-		// TODO implementar
-		return null;
+		ArrayList<Producto> productos = new ArrayList<Producto>();
+		try {
+			PreparedStatement pst = super.conexion.prepareStatement("select * from productos");
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+				Producto producto = new Producto();
+				producto.setId(rs.getInt("id"));
+				producto.setNombre(rs.getString("nombre"));
+				producto.setStock(rs.getInt("stock"));
+				producto.setFecha_compra(rs.getDate("fecha_compra"));
+				producto.setColor(rs.getString("color"));
+				producto.setMade_in(rs.getString("made_in"));
+				producto.setPrecio(rs.getDouble("precio"));
+				producto.setDescuento(rs.getInt("descuento"));
+				producto.setTallas(rs.getString("tallas"));
+				
+				productos.add(producto);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return productos;
 	}
 
 	public Producto get(int id) {
