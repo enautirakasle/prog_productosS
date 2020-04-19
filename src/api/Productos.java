@@ -42,18 +42,15 @@ public class Productos extends HttpServlet {
 		ArrayList<Producto> productos = mProducto.getAll();
 		String jsonString = JSONStringer.valueToString(productos);
 		
-		//response.setContentType("text/html; charset=UTF-8");
 	    PrintWriter out = new PrintWriter(new OutputStreamWriter(response.getOutputStream(), "UTF8"), true);
-
 //		PrintWriter out = response.getWriter();
 
-//		response.setHeader("Access-Control-Allow-Origin", "*"); // jsonp deia denean ez da behar
-		response.setContentType("application/json; charset=UTF-8");	//erantzunaren MIME mota zein den zehazten du
-		//response.setCharacterEncoding("UTF-8");			//kodifikazioa zehazten du
+		response.setHeader("Access-Control-Allow-Origin", "*"); // jsonp deia denean ez da behar
+		response.setContentType("application/json");	//erantzunaren MIME mota zein den zehazten du
+		response.setCharacterEncoding("UTF-8");			//kodifikazioa zehazten du
 
 		out.print(jsonString);
 		out.flush();
-
 	}
 
 	/**
