@@ -38,15 +38,15 @@ public class ApiProductos extends HttpServlet {
 		
 		ModeloProducto mProducto = new ModeloProducto();
 		ArrayList<Producto> productos = mProducto.getAll();
-		String jsonString = JSONStringer.valueToString(productos);
 		
-	    PrintWriter out = new PrintWriter(new OutputStreamWriter(response.getOutputStream(), "UTF8"), true);
-//		PrintWriter out = response.getWriter();
-
 		response.setHeader("Access-Control-Allow-Origin", "*"); // jsonp deia denean ez da behar
 		response.setContentType("application/json");	//erantzunaren MIME mota zein den zehazten du
-		response.setCharacterEncoding("UTF-8");			//kodifikazioa zehazten du
-
+		//response.setCharacterEncoding("UTF-8");			//kodifikazioa zehazten du
+		
+		String jsonString = JSONStringer.valueToString(productos);
+		
+//	    PrintWriter out = new PrintWriter(new OutputStreamWriter(response.getOutputStream(), "UTF8"), true);
+		PrintWriter out = response.getWriter();
 		out.print(jsonString);
 		out.flush();
 	}
