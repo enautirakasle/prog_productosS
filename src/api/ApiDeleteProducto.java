@@ -2,6 +2,7 @@ package api;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,8 +36,15 @@ public class ApiDeleteProducto extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		
-		ModeloProducto mProducto = new ModeloProducto();
-		mProducto.delete(id);
+		
+		try {
+			ModeloProducto mProducto = new ModeloProducto();
+			mProducto.delete(id);
+			mProducto.getConexion().close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 
 		response.setHeader("Access-Control-Allow-Origin", "*"); // jsonp deia denean ez da behar
 	}
